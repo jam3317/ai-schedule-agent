@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>점검일지 상세</title>
+</head>
+<body>
+
+    {% include "components/navbar.html" %}
+    
+    <h1>📋 점검일지 상세</h1>
+
+    <p><strong>제목:</strong> {{ checklist[1] }}</p>
+    <p><strong>날짜:</strong> {{ checklist[2] }}</p>
+
+    <h2>✅ 점검 항목</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                <input type="checkbox" disabled {% if item[3] == 1 %}checked{% endif %}>
+                {{ item[2] }}
+            </li>
+        {% else %}
+            <li>등록된 항목이 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="/checklist">← 돌아가기</a></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI 명령어 입력</title>
+</head>
+<body>
+
+    {% include "components/navbar.html" %}
+    
+    <h1>💬 AI 명령어 입력</h1>
+    <form method="post" action="/ai">
+        <input type="text" name="prompt" placeholder="예: 이번 주 일정 알려줘" style="width: 300px;" required>
+        <button type="submit">전송</button>
+    </form>
+
+    {% if result %}
+        <hr>
+        <h3>🔍 분석 결과</h3>
+        <pre>{{ result }}</pre>
+    {% endif %}
+</body>
+</html>

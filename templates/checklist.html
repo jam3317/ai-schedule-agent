@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>점검일지 등록</title>
+</head>
+<body>
+
+    {% include "components/navbar.html" %}
+    
+    <h1>🛠️ 점검일지 등록</h1>
+    <form action="/checklist" method="post">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="date">날짜:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="items">점검 항목 (콤마로 구분):</label><br>
+        <textarea id="items" name="items" rows="3" cols="50" placeholder="예: 소화기 상태, 출입문 작동, 전등 고장 여부" required></textarea><br><br>
+
+        <button type="submit">등록</button>
+    </form>
+
+    <hr>
+
+    <h2>📋 기존 점검일지</h2>
+    <ul>
+        {% for checklist in checklists %}
+            <li>
+                <a href="/checklist/{{ checklist[0] }}">{{ checklist[2] }} - {{ checklist[1] }}</a>
+            </li>
+        {% else %}
+            <li>등록된 점검일지가 없습니다.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
